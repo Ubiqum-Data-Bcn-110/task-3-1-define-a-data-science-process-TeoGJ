@@ -4910,14 +4910,1821 @@ df.2010.11 %>% select(Date,DateTime,Sub_metering_3,Global_reactive_power) %>%
   geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
 
 ## GRP vs. S1-S2
+##2007
+df.2007 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.01
+df.2007.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.02
+df.2007.02 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.03
+df.2007.03 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.04
+df.2007.04 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.05
+df.2007.05 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.06
+df.2007.06 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.07
+df.2007.07 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.08
+df.2007.08 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.09
+df.2007.09 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.10
+df.2007.10 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.11
+df.2007.11 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.12
+df.2007.12 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.1q
+
+#2007.2q
+
+#2007.3q
+
+#2007.4q
+
+#2008
+df.2008 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.01
+df.2008.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+
+#2008.02
+df.2008.02 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.03
+df.2008.03 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.04
+df.2008.04 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.05
+df.2008.05 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.06
+df.2008.06 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.07
+df.2008.07 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.08
+df.2008.08 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.09
+df.2008.09 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.10
+df.2008.10 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.11
+df.2008.11 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.12
+df.2008.12 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009
+df.2009 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.01
+df.2008.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2009.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.02
+df.2009.02 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.03
+df.2009.03 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.04
+df.2009.04 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.05
+df.2009.05 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.06
+df.2009.06 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.07
+df.2009.07 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.08
+df.2009.08 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.09
+df.2009.09 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.10
+df.2009.10 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.11
+df.2009.11 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.12
+df.2009.12 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010
+df.2010 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.01
+df.2007.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2008.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2009.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2010.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.02
+df.2007.02 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2008.02 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2009.02 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2010.02 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.03
+df.2010.03 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.04
+df.2010.04 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.05
+df.2010.05 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.06
+df.2010.06 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.07
+df.2010.07 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.08
+df.2010.08 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.09
+df.2010.09 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.10
+df.2010.10 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.11
+df.2010.11 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
 
 ## GRP vs. S1-S3
+##2007
+df.2007 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.01
+df.2007.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.02
+df.2007.02 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.03
+df.2007.03 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.04
+df.2007.04 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.05
+df.2007.05 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.06
+df.2007.06 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.07
+df.2007.07 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.08
+df.2007.08 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.09
+df.2007.09 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.10
+df.2007.10 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.11
+df.2007.11 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.12
+df.2007.12 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.1q
+
+#2007.2q
+
+#2007.3q
+
+#2007.4q
+
+#2008
+df.2008 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.01
+df.2008.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+
+#2008.02
+df.2008.02 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.03
+df.2008.03 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.04
+df.2008.04 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.05
+df.2008.05 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.06
+df.2008.06 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.07
+df.2008.07 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.08
+df.2008.08 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.09
+df.2008.09 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.10
+df.2008.10 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.11
+df.2008.11 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.12
+df.2008.12 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009
+df.2009 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.01
+df.2008.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2009.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.02
+df.2009.02 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.03
+df.2009.03 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.04
+df.2009.04 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.05
+df.2009.05 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.06
+df.2009.06 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.07
+df.2009.07 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.08
+df.2009.08 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.09
+df.2009.09 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.10
+df.2009.10 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.11
+df.2009.11 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.12
+df.2009.12 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010
+df.2010 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.01
+df.2007.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2008.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2009.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2010.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.02
+df.2007.02 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2008.02 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2009.02 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2010.02 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.03
+df.2010.03 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.04
+df.2010.04 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.05
+df.2010.05 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.06
+df.2010.06 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.07
+df.2010.07 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.08
+df.2010.08 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.09
+df.2010.09 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.10
+df.2010.10 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.11
+df.2010.11 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
 
 ## GRP vs. S2-S3
+##2007
+df.2007 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.01
+df.2007.01 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.02
+df.2007.02 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.03
+df.2007.03 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.04
+df.2007.04 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.05
+df.2007.05 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.06
+df.2007.06 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.07
+df.2007.07 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.08
+df.2007.08 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.09
+df.2007.09 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.10
+df.2007.10 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.11
+df.2007.11 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.12
+df.2007.12 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.1q
+
+#2007.2q
+
+#2007.3q
+
+#2007.4q
+
+#2008
+df.2008 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.01
+df.2008.01 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+
+#2008.02
+df.2008.02 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.03
+df.2008.03 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.04
+df.2008.04 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.05
+df.2008.05 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.06
+df.2008.06 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.07
+df.2008.07 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.08
+df.2008.08 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.09
+df.2008.09 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.10
+df.2008.10 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.11
+df.2008.11 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.12
+df.2008.12 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009
+df.2009 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.01
+df.2008.01 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2009.01 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.02
+df.2009.02 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.03
+df.2009.03 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.04
+df.2009.04 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.05
+df.2009.05 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.06
+df.2009.06 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.07
+df.2009.07 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.08
+df.2009.08 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.09
+df.2009.09 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.10
+df.2009.10 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.11
+df.2009.11 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.12
+df.2009.12 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010
+df.2010 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.01
+df.2007.01 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2008.01 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2009.01 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2010.01 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.02
+df.2007.02 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2008.02 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2009.02 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2010.02 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.03
+df.2010.03 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.04
+df.2010.04 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.05
+df.2010.05 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.06
+df.2010.06 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.07
+df.2010.07 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.08
+df.2010.08 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.09
+df.2010.09 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.10
+df.2010.10 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.11
+df.2010.11 %>% select(Date,DateTime,Sub_metering_3,Sub_metering_2,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
 
 ## GRP vs. S1-S2-S3
+##2007
+df.2007 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.01
+df.2007.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.02
+df.2007.02 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.03
+df.2007.03 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.04
+df.2007.04 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.05
+df.2007.05 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.06
+df.2007.06 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.07
+df.2007.07 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.08
+df.2007.08 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.09
+df.2007.09 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.10
+df.2007.10 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.11
+df.2007.11 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.12
+df.2007.12 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2007.1q
+
+#2007.2q
+
+#2007.3q
+
+#2007.4q
+
+#2008
+df.2008 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.01
+df.2008.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+
+#2008.02
+df.2008.02 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.03
+df.2008.03 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.04
+df.2008.04 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.05
+df.2008.05 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.06
+df.2008.06 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.07
+df.2008.07 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.08
+df.2008.08 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.09
+df.2008.09 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.10
+df.2008.10 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.11
+df.2008.11 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2008.12
+df.2008.12 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009
+df.2009 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.01
+df.2008.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2009.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.02
+df.2009.02 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.03
+df.2009.03 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.04
+df.2009.04 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.05
+df.2009.05 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.06
+df.2009.06 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.07
+df.2009.07 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.08
+df.2009.08 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.09
+df.2009.09 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.10
+df.2009.10 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.11
+df.2009.11 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2009.12
+df.2009.12 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010
+df.2010 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.01
+df.2007.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2008.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2009.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2010.01 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.02
+df.2007.02 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2008.02 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2009.02 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+df.2010.02 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.03
+df.2010.03 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.04
+df.2010.04 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.05
+df.2010.05 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.06
+df.2010.06 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.07
+df.2010.07 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.08
+df.2010.08 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.09
+df.2010.09 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.10
+df.2010.10 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
+
+#2010.11
+df.2010.11 %>% select(Date,DateTime,Sub_metering_1,Sub_metering_2,Sub_metering_3,Global_reactive_power) %>% 
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Sub_metering_1,col="Kitchen")) +
+  geom_line(aes(y=Sub_metering_2,col="Laundry")) +
+  geom_line(aes(y=Sub_metering_3,col="Climatization")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power"))
 
 ## GAP vs. GRP vs. Voltage vs. GI
+## 2007
+df.2007 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2007.01
+df.2007.01 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2007.02
+df.2007.02 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2007.03
+df.2007.03 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2007.04
+df.2007.04 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2007.05
+df.2007.05 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2007.06
+df.2007.06 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2007.07
+df.2007.07 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2007.08
+df.2007.08 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2007.09
+df.2007.09 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2007.10
+df.2007.10 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2007.11
+df.2007.11 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2007.12
+df.2007.12 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+## 2008
+
+#2008.01
+df.2008.01 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2008.02
+df.2008.02 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2008.03
+df.2008.03 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2008.04
+df.2008.04 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2008.05
+df.2008.05 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2008.06
+df.2008.06 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2008.07
+df.2008.07 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2008.08
+df.2008.08 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2008.09
+df.2008.09 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2008.10
+df.2008.10 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2008.11
+df.2008.11 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2008.12
+df.2008.12 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+## 2009
+df.2009 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2009.01
+df.2009.01 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2009.02
+df.2009.02 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2009.03
+df.2009.03 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2009.04
+df.2009.04 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2009.05
+df.2009.05 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2009.06
+df.2009.06 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2009.07
+df.2009.07 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2009.08
+df.2009.08 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2009.09
+df.2009.09 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2009.10
+df.2009.10 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2009.11
+df.2009.11 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2009.12
+df.2009.12 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+## 2010
+df.2010 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2010.01
+df.2010.01 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2010.02
+df.2010.02 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2010.03
+df.2010.03 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2010.04
+df.2010.04 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2010.05
+df.2010.05 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2010.06
+df.2010.06 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2010.07
+df.2010.07 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2010.08
+df.2010.08 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2010.09
+df.2010.09 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2010.10
+df.2010.10 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+#2010.11
+df.2010.11 %>% select(Date,DateTime,Global_active_power,Global_reactive_power,Global_intensity,Voltage) %>%
+  ggplot(aes(x=DateTime)) + geom_line(aes(y=Global_active_power,col="Global Active Power")) +
+  geom_line(aes(y=Global_reactive_power,col="Global Reactive Power")) +
+  geom_line(aes(y=Global_intensity,col="Global Intensity")) +
+  geom_line(aes(y=Voltage,col="Voltage"))
+
+
 
 ##...
 
