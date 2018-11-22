@@ -159,7 +159,6 @@ ts_monthly <- ts(MonthlyConsumption, frequency = 12)
 plot.ts(ts_annual)
 plot.ts(ts_monthly)
 
-
 ## outliers
 
 boxplot(ts_annual ~ cycle(ts_annual))
@@ -175,22 +174,45 @@ plot.ts(log.ts_monthly)
 
 #### Building Models
 
-Active_power_ts_monthly <- (ts_monthly[,3])
-decompose(Active_power_ts_monthly)
-Active_power_ts_monthly_decompose <-decompose(Active_power_ts_monthly)
-plot(Active_power_ts_monthly_decompose)
+##Decomposing
+
+GAP.Month.TS <- (ts_monthly[,3])
+decompose(GAP.Month.TS)
+GAP.Month.TS.Decomposed <-decompose(GAP.Month.TS)
+plot(GAP.Month.TS.Decomposed)
+autoplot(GAP.Month.TS.Decomposed)
+
+GAP.Month.TS.Decomposed$seasonal
+GAP.Month.TS.Decomposed$trend
+GAP.Month.TS.Decomposed$random
 
 Active_power_ts_annual <- ts_annual[,2]
 decompose(Active_power_ts_annual)
 Active_power_ts_decompose_annual<- decompose(Active_power_ts_annual)
 plot(Active_power_ts_decompose_annual)
 
-##HoltWinters
 
+##Adjusting
+
+GAP.Month.TS.Adjusted <- GAP.Month.TS.Decomposed$seasonal + GAP.Month.TS.Decomposed$trend
+plot(GAP.Month.TS.Adjusted)       ##NA's fins mitjans de 2007 i a partir
+                                  ##de mitjans de 2010. Passa alguna cosa.
+
+##HoltWinters
+library("forecast")
 month_forecasts <- HoltWinters(ts_monthly)
 month_forecasts
+month_forecasts$SSE
+
+forecast(month_forecasts)
+
+month_forecasts2 <- forecast(month_forecasts)
 
 plot(month_forecasts)
+
+acf(month_forecasts2)
+
+
 
 annual_forecasts <- HoltWinters(ts_annual)
 annual_forecasts
