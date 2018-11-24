@@ -117,7 +117,7 @@ energy_ts <- df$Global_active_power
 plot(energy_ts)  
 df$gap_clean <- tsclean(energy_ts)
 plot(df$gap_clean)
-  
+
 ## 1.1.4. Replacing NA's (when Quim's sentence "less is more" has full of sense)
 
 df[is.na(df)] <- 0
@@ -140,6 +140,7 @@ MonthlyConsumption <- df %>% group_by(Year, Month) %>% summarise("ActivePower"=s
                                                                 "Climatization"=sum(Sub_metering_3),
                                                                 "TotalSubCons"=sum(TotalSubCons),
                                                                 "TotalConsumption"=sum(TotalConsumption))
+
 
 # as we realize on 2.2. while decomposing, August'08 is outlying the model,
 # so we'll adjust it by replacing its value for the mean all the rest of August
@@ -165,6 +166,12 @@ MonthlyConsumption[21,8] <- sum(MonthlyConsumption[9,8], MonthlyConsumption[33,8
 
 MonthlyConsumption[21,9] <- sum(MonthlyConsumption[9,9], MonthlyConsumption[33,9],
                                 MonthlyConsumption[45,9])/3
+
+# Given the fact that both Dec-06 and Nov-10 the monthly observations are
+# incomplete, I'll filter both before training the model.
+
+MonthlyConsumption <- MonthlyConsumption %>% filter(!(Year == 2006))
+MonthlyConsumption <- MonthlyConsumption %>% filter(!(Year == 2010 & Month == 11))
 
 
 ## 1.1.6. Correlation Matrix
@@ -224,8 +231,8 @@ boxplot(ts_monthly ~ cycle(ts_monthly))
 
 # Splitting into train and test sets
 
-ts_monthly_train <- forecast:::subset.ts(ts_monthly, end = 36)
-ts_monthly_test <- forecast:::subset.ts(ts_monthly, start = 37)
+ts_monthly_train <- forecast:::subset.ts(ts_monthly, end = 34)
+ts_monthly_test <- forecast:::subset.ts(ts_monthly, start = 35)
 
 
 # log (useless, we are dealing an additive model, not multiplicative)
@@ -239,7 +246,6 @@ plot.ts(log.ts_monthly)
 
 ## 2.2.1. Decompose monthly GAP
 GAP.Month.TS <- (ts_monthly[,3])
-decompose(GAP.Month.TS)
 GAP.Month.TS.Decomposed <-decompose(GAP.Month.TS)
 plot(GAP.Month.TS.Decomposed)
 autoplot(GAP.Month.TS.Decomposed)
@@ -253,7 +259,6 @@ boxplot(GAP.Month.TS ~ cycle(GAP.Month.TS))
 #2.2.1.1. Decompose monthly GAP to train and test
 
 GAP.Month.TS.Train <- (ts_monthly_train[,3])
-decompose(GAP.Month.TS.Train)
 GAP.Month.TS.Train.Decomposed <-decompose(GAP.Month.TS.Train)
 plot(GAP.Month.TS.Train.Decomposed)
 autoplot(GAP.Month.TS.Train.Decomposed)
@@ -266,6 +271,7 @@ decompose(GAP.Month.TS.Test)
 GRP.Month.TS <- (ts_monthly[,4])
 GRP.Month.TS.Decomposed <- decompose(GRP.Month.TS)
 plot(GRP.Month.TS.Decomposed)
+autoplot(GRP.Month.TS.Decomposed)
 
 boxplot(GRP.Month.TS ~ cycle(GRP.Month.TS))
 
@@ -386,9 +392,38 @@ autoplot(GRP.Month.TS.Test) +
 
 ## 2.4.3.3. Total Consumption
 autoplot(TC.Month.TS.Test) +
-  autolayer(TC.Month.TS.HWForecast.Train, col="red") +
-  autolayer(TC.Month.TS.Train.ArimaForecast, col="blue")
+  autolayer(TC.Month.TS.HWForecast.Train, col="red", PI = FALSE) +
+  autolayer(TC.Month.TS.Train.ArimaForecast, col="blue", PI = FALSE)
 
 #### 2.5. Applying Model
 
+### 2.5.1. HoltWinters
+## 2.5.1.1. HoltWinters to GAP
+GAP.Month.TS.HoltWinters <- HoltWinters(GAP.Month.TS, alpha = NULL)
+stats:::plot.HoltWinters(GAP.Month.TS.HoltWinters, col = 1, 
+                         col.predicted = "green")
+
+GAP.Month.TS.Forecast.Train <- HoltWinters(GAP.Month.TS.Train, alpha = NULL)
+stats:::plot.HoltWinters(GAP.Month.TS.Forecast.Train, col = 1,
+                         col.predicted = "green")
+
+GAP.Month.TS.Forecast.Train$fitted
+
+GAP.Month.TS.HWForecast.Train <- forecast:::forecast.HoltWinters(GAP.Month.TS.Forecast.Train, h = 12)
+GAP.Month.TS.HWForecast.Train
+forecast:::plot.forecast(GAP.Month.TS.HWForecast.Train)
+
+accuracy(GAP.Month.TS.HWForecast.Train,GAP.Month.TS.Test)
+
+## 2.5.1.2. HoltWinters to GRP
+
+## 2.5.1.3. HoltWinters to Total Consumption
+
+### 2.5.2. Arima
+
+## 2.5.2.1. Arima to GAP
+
+## 2.5.2.2. Arima to GRP
+
+## 2.5.2.3. Arima to Total Consumption
 
