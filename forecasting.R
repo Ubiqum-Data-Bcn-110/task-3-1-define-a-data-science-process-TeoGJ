@@ -50,7 +50,10 @@ setwd("C:/Users/User/Desktop/DataAnalytics/41DefineDSProcess")
 
 install.packages("forecast")
 install.packages("ggpmisc")
-install.packages("TTR")
+install.packages("bizdays")
+install.packages("marima")
+install.packages("forecastHybrid")
+install.packages("vars")
 library(readr)
 library(dplyr)
 library(lubridate)
@@ -59,7 +62,10 @@ library(forecast)
 library(ggpmisc)
 library(stats)
 library(tseries)
-
+library(bizdays)
+library(marima)
+library(forecastHybrid)
+library(vars)
 
 
 
@@ -110,8 +116,13 @@ df$Month <- as.numeric(df$Month)
 
 df$Season$Winter
 df$Season$Spring
-df$Season$
+df$Season$Summer
+df$Season$Autumn
 
+create.calendar(name='FrenchCalendar', holidays=holidays, weekdays=c('sunday', 'saturday'),
+                 adjust.from=adjust.next, adjust.to=adjust.previous)
+
+calendars()
 
 energy_ts <- df$Global_active_power  
 plot(energy_ts)  
@@ -170,8 +181,8 @@ MonthlyConsumption[21,9] <- sum(MonthlyConsumption[9,9], MonthlyConsumption[33,9
 # Given the fact that both Dec-06 and Nov-10 the monthly observations are
 # incomplete, I'll filter both before training the model.
 
-MonthlyConsumption <- MonthlyConsumption %>% filter(!(Year == 2006))
-MonthlyConsumption <- MonthlyConsumption %>% filter(!(Year == 2010 & Month == 11))
+MonthlyConsumption2 <- MonthlyConsumption %>% filter(!(Year == 2006))
+MonthlyConsumption2 <- MonthlyConsumption2 %>% filter(!(Year == 2010 & Month == 11))
 
 
 ## 1.1.6. Correlation Matrix
@@ -221,6 +232,7 @@ df %>% group_by(year(DateTime)) %>% select(Date,DateTime,TotalConsumption) %>%
 
 ts_annual <- ts(AnnualConsumption, frequency = 1)
 ts_monthly <- ts(MonthlyConsumption, frequency = 12)
+ts_monthly2 <- ts(MonthlyConsumption2, frequency = 12)
 
 # outliers
 
@@ -234,6 +246,9 @@ boxplot(ts_monthly ~ cycle(ts_monthly))
 ts_monthly_train <- forecast:::subset.ts(ts_monthly, end = 34)
 ts_monthly_test <- forecast:::subset.ts(ts_monthly, start = 35)
 
+ts_monthly2_train <- forecast:::subset.ts(ts_monthly2, end = 34)
+ts_monthly2_test <- forecast:::subset.ts(ts_monthly2, start = 35)
+
 
 # log (useless, we are dealing an additive model, not multiplicative)
 log.ts_annual <- log(ts_annual)
@@ -242,7 +257,14 @@ log.ts_monthly <- log(ts_monthly)
 plot.ts(log.ts_annual)
 plot.ts(log.ts_monthly)
 
+acf(diff(log.ts_monthly))
+pacf(diff(log.ts_monthly))
+
 ### 2.2. Decomposing Time Series
+ts_monthly.decomposed <- decompose(ts_monthly)
+ts_monthly.train.decomposed <- decompose(ts_monthly_train)
+
+ts_monthly.train.decomposed
 
 ## 2.2.1. Decompose monthly GAP
 GAP.Month.TS <- (ts_monthly[,3])
@@ -250,14 +272,9 @@ GAP.Month.TS.Decomposed <-decompose(GAP.Month.TS)
 plot(GAP.Month.TS.Decomposed)
 autoplot(GAP.Month.TS.Decomposed)
 
-GAP.Month.TS.Decomposed$seasonal
-GAP.Month.TS.Decomposed$trend
-GAP.Month.TS.Decomposed$random
-
-boxplot(GAP.Month.TS ~ cycle(GAP.Month.TS))
+GAP.Month.TS.2 <- (ts_monthly2[,3])
 
 #2.2.1.1. Decompose monthly GAP to train and test
-
 GAP.Month.TS.Train <- (ts_monthly_train[,3])
 GAP.Month.TS.Train.Decomposed <-decompose(GAP.Month.TS.Train)
 plot(GAP.Month.TS.Train.Decomposed)
@@ -266,6 +283,8 @@ autoplot(GAP.Month.TS.Train.Decomposed)
 GAP.Month.TS.Test <- (ts_monthly_test[,3])
 decompose(GAP.Month.TS.Test)
 
+GAP.Month.TS.Train.2 <- (ts_monthly2_train[,3])
+GAP.Month.TS.Test.2 <- (ts_monthly2_test[,3])
 
 ## 2.2.2. Decompose monthly GRP
 GRP.Month.TS <- (ts_monthly[,4])
@@ -275,12 +294,18 @@ autoplot(GRP.Month.TS.Decomposed)
 
 boxplot(GRP.Month.TS ~ cycle(GRP.Month.TS))
 
+
+GRP.Month.TS.2 <- ts_monthly2[,4]
+
 #2.2.2.1. Decompose monthly GRP to train and test
 GRP.Month.TS.Train <- ts_monthly_train[,4]
 GRP.Month.TS.Train.Decomposed <- decompose(GRP.Month.TS.Train)
 plot(GRP.Month.TS.Train.Decomposed)
 
 GRP.Month.TS.Test <- ts_monthly_test[,4]
+
+GRP.Month.TS.Train.2 <- ts_monthly2_train[,4]
+GRP.Month.TS.Test.2 <- ts_monthly2_test[,4]
 
 ## 2.2.3. Decompose Total Consumption
 TC.Month.TS <- (ts_monthly[,9])
@@ -289,12 +314,17 @@ plot(TC.Month.TS.Decomposed)
 
 boxplot(TC.Month.TS ~ cycle(TC.Month.TS))
 
+TC.Month.TS.2 <- (ts_monthly2[,9])
+
 #2.2.3.1. Decompose TotC to train and test
 TC.Month.TS.Train <- ts_monthly_train[,9]
 TC.Month.TS.Train.Decomposed <- decompose(TC.Month.TS.Train)
 plot(TC.Month.TS.Train.Decomposed)
 
 TC.Month.TS.Test <- ts_monthly_test[,9]
+
+TC.Month.TS.Train.2 <- ts_monthly2_train[,9]
+TC.Month.TS.Test.2 <- ts_monthly2_test[,9]
 
 ## 2.2.4. Outliers
 
@@ -304,64 +334,147 @@ tsclean(GAP.Month.TS)   ## NO ENCARA!!!
 
 ## 2.3.1. Adjusting monthly GAP
 GAP.Month.TS.Adjusted <- GAP.Month.TS - GAP.Month.TS.Decomposed$random
-plot(GAP.Month.TS.Adjusted)       
+plot(GAP.Month.TS.Adjusted)
 
+GAP.Month.TS.Train.Adjusted <- GAP.Month.TS.Train - GAP.Month.TS.Train.Decomposed$random
+plot(GAP.Month.TS.Train.Adjusted)
+plot(GAP.Month.TS.Train)
 
 ## 2.3.2. Adjusting monthly GRP
 GRP.Month.TS.Adjusted <- GRP.Month.TS - GRP.Month.TS.Decomposed$random
 plot(GRP.Month.TS.Adjusted)
 
+GRP.Month.TS.Train.Adjusted <- GRP.Month.TS.Train - GRP.Month.TS.Train.Decomposed$random
+
 ## 2.3.3. Adjusting monthly Total Consumption
 TC.Month.TS.Adjusted <- TC.Month.TS - TC.Month.TS.Decomposed$random
 plot(TC.Month.TS.Adjusted)
 
-### 2.4. Training forecasts
-## 2.4.1. HoltWinters
+TC.Month.TS.Train.Adjusted <- TC.Month.TS.Train - TC.Month.TS.Train.Decomposed$random
+
+#### 2.4. Training forecasts
+### 2.4.1. HoltWinters
 ## 2.4.1.1 HoltWinters with monthly GAP
-GAP.Month.TS.Forecast.Train <- HoltWinters(GAP.Month.TS.Train, alpha = NULL)
-stats:::plot.HoltWinters(GAP.Month.TS.Forecast.Train, col = 1,
+# 2.4.1.1.1. Removing randomness
+
+GAP.Month.TS.HW.Train <- HoltWinters(GAP.Month.TS.Train.Adjusted)
+stats:::plot.HoltWinters(GAP.Month.TS.HW.Train, col = 1,
                          col.predicted = "green")
 
-GAP.Month.TS.Forecast.Train$fitted
-
-GAP.Month.TS.HWForecast.Train <- forecast:::forecast.HoltWinters(GAP.Month.TS.Forecast.Train, h = 12)
+GAP.Month.TS.HWForecast.Train <- forecast:::forecast.HoltWinters(GAP.Month.TS.HW.Train, h = 12)
 GAP.Month.TS.HWForecast.Train
 forecast:::plot.forecast(GAP.Month.TS.HWForecast.Train)
 
 accuracy(GAP.Month.TS.HWForecast.Train,GAP.Month.TS.Test)
 
-GAP.Month.TS.Test
+# 2.4.1.1.2 Without removing randomness
+
+GAP.Month.TS.HW.Train.R <- HoltWinters(GAP.Month.TS.Train)
+stats:::plot.HoltWinters(GAP.Month.TS.HW.Train.2, col = 1,
+                         col.predicted = "green")
+
+GAP.Month.TS.HWForecast.Train.R <- forecast:::forecast.HoltWinters(GAP.Month.TS.HW.Train.R, h = 12)
+GAP.Month.TS.HWForecast.Train.R
+forecast:::plot.forecast(GAP.Month.TS.HWForecast.Train.2)
+
+accuracy(GAP.Month.TS.HWForecast.Train.2,GAP.Month.TS.Test)
+
+#2.4.1.1.3 Only using complete months
+
+GAP.Month.TS.HW.Train.2 <- HoltWinters(GAP.Month.TS.Train.2)
+stats:::plot.HoltWinters(GAP.Month.TS.HW.Train.2, col = 1,
+                         col.predicted = "green")
+
+GAP.Month.TS.HWForecast.Train.2 <- forecast:::forecast.HoltWinters(GAP.Month.TS.HW.Train.2, h = 12)
+GAP.Month.TS.HWForecast.Train.2
+forecast:::plot.forecast(GAP.Month.TS.HWForecast.Train.2)
+
+accuracy(GAP.Month.TS.HWForecast.Train.2,GAP.Month.TS.Test.2)
 
 ## 2.4.1.2 HoltWinters with monthly GRP
-GRP.Month.TS.Forecast.Train <- HoltWinters(GRP.Month.TS.Train, alpha = NULL)
+# 2.4.1.2.1. Removing randomness
+GRP.Month.TS.HW.Train <- HoltWinters(GRP.Month.TS.Train, alpha = NULL)
 plot(GRP.Month.TS.Forecast.Train)
 
-GRP.Month.TS.HWForecast.Train <- forecast:::forecast.HoltWinters(GRP.Month.TS.Forecast.Train, h = 12)
+GRP.Month.TS.HWForecast.Train <- forecast:::forecast.HoltWinters(GRP.Month.TS.HW.Train, h = 12)
 GRP.Month.TS.HWForecast.Train
 forecast:::plot.forecast(GRP.Month.TS.HWForecast.Train)
 
 accuracy(GRP.Month.TS.HWForecast.Train, GRP.Month.TS.Test)
 
-## 2.4.1.3. HoltWinters with Total Consumption
-TC.Month.TS.Forecast.Train <- HoltWinters(TC.Month.TS.Train, alpha = NULL)
-plot(TC.Month.TS.Forecast.Train)
+# 2.4.1.2.2 Without removing randomness
+GRP.Month.TS.HW.Train.R <- HoltWinters(GRP.Month.TS.Train)
+plot(GRP.Month.TS.HW.Train.R)
 
-TC.Month.TS.HWForecast.Train <- forecast:::forecast.HoltWinters(TC.Month.TS.Forecast.Train, h = 12)
+GRP.Month.TS.HWForecast.Train.R <- forecast:::forecast.HoltWinters(GRP.Month.TS.HW.Train.R, h = 12)
+GRP.Month.TS.HWForecast.Train.R
+forecast:::plot.forecast(GRP.Month.TS.HWForecast.Train.R)
+
+accuracy(GRP.Month.TS.HWForecast.Train.R , GRP.Month.TS.Test)
+
+#2.4.1.2.3 Only with complete months
+GRP.Month.TS.HW.Train.2 <- HoltWinters(GRP.Month.TS.Train.2)
+plot(GRP.Month.TS.HW.Train.2)
+
+GRP.Month.TS.HWForecast.Train.2 <- forecast:::forecast.HoltWinters(GRP.Month.TS.HW.Train.2, h = 12)
+GRP.Month.TS.HWForecast.Train.2
+forecast:::plot.forecast(GRP.Month.TS.HWForecast.Train.2)
+
+accuracy(GRP.Month.TS.HWForecast.Train.2, GRP.Month.TS.Test.2)
+
+## 2.4.1.3. HoltWinters with Total Consumption
+# 2.4.1.3.1. Removing randomness
+TC.Month.TS.HW.Train <- HoltWinters(TC.Month.TS.Train, alpha = NULL)
+plot(TC.Month.TS.HW.Train)
+
+TC.Month.TS.HWForecast.Train <- forecast:::forecast.HoltWinters(TC.Month.TS.HW.Train, h = 12)
 TC.Month.TS.HWForecast.Train
 forecast:::plot.forecast(TC.Month.TS.HWForecast.Train)
 
 accuracy(TC.Month.TS.HWForecast.Train, TC.Month.TS.Test)
 
+# 2.4.1.3.2. Without removing randomness
+TC.Month.TS.HW.Train.R <- HoltWinters(TC.Month.TS.Train)
+plot(TC.Month.TS.HW.Train.R)
+
+TC.Month.TS.HWForecast.Train.R <- forecast:::forecast.HoltWinters(TC.Month.TS.HW.Train.R, h = 12)
+TC.Month.TS.HWForecast.Train.R
+forecast:::plot.forecast(TC.Month.TS.HWForecast.Train.R)
+
+accuracy(TC.Month.TS.HWForecast.Train.R, TC.Month.TS.Test)
+
+# 2.4.1.3.3. Only with complete months
+TC.Month.TS.HW.Train.2 <- HoltWinters(TC.Month.TS.Train.2)
+plot(TC.Month.TS.HW.Train.2)
+
+TC.Month.TS.HWForecast.Train.2 <- forecast:::forecast.HoltWinters(TC.Month.TS.HW.Train.2, h = 12)
+TC.Month.TS.HWForecast.Train.2
+forecast:::plot.forecast(TC.Month.TS.HWForecast.Train.2)
+
+accuracy(TC.Month.TS.HWForecast.Train.2, TC.Month.TS.Test.2)
+
+
 ### 2.4.2.1. ARIMA
 ## 2.4.2.2. Training monthly GAP with ARIMA
+# 2.4.2.2.1.
 
 GAP.Month.TS.Train.Arima <- auto.arima(GAP.Month.TS.Train)
 GAP.Month.TS.Train.ArimaForecast <- forecast:::forecast.Arima(GAP.Month.TS.Train.Arima, h = 12)
-plot(GAP.Month.TS.Train.ArimaForecast)
+autoplot(GAP.Month.TS.Train.ArimaForecast)
+GAP.Month.TS.Train.Arima
 
 accuracy(GAP.Month.TS.Train.ArimaForecast, GAP.Month.TS.Test)
 
+#2.4.2.2.2 Only with complete months
+GAP.Month.TS.Train.Arima.2 <- auto.arima(GAP.Month.TS.Train.2)
+GAP.Month.TS.Train.ArimaForecast.2 <- forecast:::forecast.Arima(GAP.Month.TS.Train.Arima.2, h = 12)
+autoplot(GAP.Month.TS.Train.ArimaForecast.2)
+
+accuracy(GAP.Month.TS.Train.ArimaForecast.2, GAP.Month.TS.Test.2)
+
+
 ## 2.4.2.3. Training monthly GRP with ARIMA
+# 2.4.2.3.1
 
 GRP.Month.TS.Train.Arima <- auto.arima(GRP.Month.TS.Train)
 GRP.Month.TS.Train.ArimaForecast <- forecast:::forecast.Arima(GRP.Month.TS.Train.Arima, h = 12)
@@ -369,7 +482,16 @@ plot(GRP.Month.TS.Train.ArimaForecast)
 
 accuracy(GRP.Month.TS.Train.ArimaForecast, GRP.Month.TS.Test)
 
+#2.4.2.3.2 Only with complete months
+GRP.Month.TS.Train.Arima.2 <- auto.arima(GRP.Month.TS.Train.2)
+GRP.Month.TS.Train.ArimaForecast.2 <- forecast:::forecast.Arima(GRP.Month.TS.Train.Arima.2, h = 12)
+autoplot(GRP.Month.TS.Train.ArimaForecast.2)
+
+accuracy(GRP.Month.TS.Train.ArimaForecast.2, GRP.Month.TS.Test.2)
+
+
 ## 2.4.2.4. Training monthly TC with ARIMA
+# 2.4.2.4.1
 
 TC.Month.TS.Train.Arima <- auto.arima(TC.Month.TS.Train)
 TC.Month.TS.Train.ArimaForecast <- forecast:::forecast.Arima(TC.Month.TS.Train.Arima, h = 12)
@@ -377,53 +499,216 @@ plot(TC.Month.TS.Train.ArimaForecast)
 
 accuracy(TC.Month.TS.Train.ArimaForecast, TC.Month.TS.Test)
 
-### 2.4.3. Plotting trained models
+# 2.4.2.4.2 Only with complete months
+TC.Month.TS.Train.Arima.2 <- auto.arima(TC.Month.TS.Train.2)
+TC.Month.TS.Train.ArimaForecast.2 <- forecast:::forecast.Arima(TC.Month.TS.Train.Arima.2, h = 12)
+autoplot(TC.Month.TS.Train.ArimaForecast.2)
 
-## 2.4.3.1. GAP
+accuracy(TC.Month.TS.Train.ArimaForecast.2, TC.Month.TS.Test.2)
+
+## 2.4.3. Hybrid modelling
+# 2.4.3.1. Training hybrid modelling to GAP
+
+GAP.Month.TS.Hybrid.Train <- hybridModel(GAP.Month.TS.Train.2, models = "aefnst", lambda = NULL, a.args = NULL,
+            e.args = NULL, n.args = NULL, s.args = NULL, t.args = NULL,
+            z.args = NULL, weights = c("equal", "insample.errors", "cv.errors"),
+            errorMethod = c("RMSE", "MAE", "MASE"), cvHorizon = frequency(y),
+            windowSize = 84, horizonAverage = FALSE, parallel = FALSE,
+            num.cores = 2L, verbose = TRUE)
+
+GAP.Month.TS.HybridForecast.Train <- forecastHybrid:::forecast.hybridModel(GAP.Month.TS.Hybrid.Train, h = 12)
+forecastHybrid:::plot.hybridModel(GAP.Month.TS.HybridForecast.Train)
+forecast:::plot.forecast(GAP.Month.TS.HybridForecast.Train)
+
+accuracy(GAP.Month.TS.HybridForecast.Train, GAP.Month.TS.Test.2)
+accuracy(GAP.Month.TS.HWForecast.Train, GAP.Month.TS.Test.2)
+accuracy(GAP.Month.TS.Train.ArimaForecast, GAP.Month.TS.Test.2)
+
+# 2.4.3.2. Training hybrid modelling to GRP
+
+GRP.Month.TS.Hybrid.Train <- hybridModel(GRP.Month.TS.Train.2, models = "aefnst", lambda = NULL, a.args = NULL,
+                                         e.args = NULL, n.args = NULL, s.args = NULL, t.args = NULL,
+                                         z.args = NULL, weights = c("equal", "insample.errors", "cv.errors"),
+                                         errorMethod = c("RMSE", "MAE", "MASE"), cvHorizon = frequency(y),
+                                         windowSize = 84, horizonAverage = FALSE, parallel = FALSE,
+                                         num.cores = 2L, verbose = TRUE)
+
+GRP.Month.TS.HybridForecast.Train <- forecastHybrid:::forecast.hybridModel(GRP.Month.TS.Hybrid.Train, h = 12)
+forecastHybrid:::plot.hybridModel(GRP.Month.TS.HybridForecast.Train)
+forecast:::plot.forecast(GRP.Month.TS.HybridForecast.Train)
+
+accuracy(GRP.Month.TS.HybridForecast.Train, GRP.Month.TS.Test.2)
+accuracy(GRP.Month.TS.HWForecast.Train, GRP.Month.TS.Test.2)
+accuracy(GRP.Month.TS.Train.ArimaForecast, GRP.Month.TS.Test.2)
+
+### 2.5. Plotting trained models
+
+## 2.5.1. GAP
 autoplot(GAP.Month.TS.Test) +
   autolayer(GAP.Month.TS.HWForecast.Train,col="red", series = "HoltWinters", PI = FALSE) +
   autolayer(GAP.Month.TS.Train.ArimaForecast,col="blue", series = "ARIMA", PI = FALSE) +
-  scale_color_manual(labels("HoltWinters","ARIMA"))
+  autolayer(GAP.Month.TS.HybridForecast, col = "green", series = "Hybrid", PI = FALSE) +
+    scale_color_manual(labels("HoltWinters","ARIMA"))
 
-## 2.4.3.2. GRP
+
+## 2.5.2. GRP
 autoplot(GRP.Month.TS.Test) + 
   autolayer(GRP.Month.TS.HWForecast.Train,col="red", PI = FALSE) +
-  autolayer(GRP.Month.TS.Train.ArimaForecast,col="blue", PI = FALSE)
+  autolayer(GRP.Month.TS.Train.ArimaForecast,col="blue", PI = FALSE) +
+  autolayer(GRP.Month.TS.HybridForecast.Train, col ="green", series = "Hybrid", PI = FALSE)
 
-## 2.4.3.3. Total Consumption
+## 2.5.3. Total Consumption
 autoplot(TC.Month.TS.Test) +
   autolayer(TC.Month.TS.HWForecast.Train, col="red", PI = FALSE) +
   autolayer(TC.Month.TS.Train.ArimaForecast, col="blue", PI = FALSE)
 
-#### 2.5. Applying Model
+GAPHybridForecastTrain <- as.data.frame(GAP.Month.TS.HybridForecast.Train)
+GAPHWForecastTrain <- as.data.frame(GAP.Month.TS.HWForecast.Train)
+GAPArimaForecastTrain <- as.data.frame(GAP.Month.TS.Train.ArimaForecast)
 
-### 2.5.1. HoltWinters
-## 2.5.1.1. HoltWinters to GAP
+GAPHybridForecastTrain$mae.95 <- GAPHybridForecastTrain$`Hi 95` - GAPHybridForecastTrain$`Lo 95`
+GAPHWForecastTrain$mae.95 <- GAPHWForecastTrain$`Hi 95` - GAPHWForecastTrain$`Lo 95`
+GAPArimaForecastTrain$mae.95 <- GAPArimaForecastTrain$`Hi 95`- GAPArimaForecastTrain$`Lo 95`
+
+GAPHybridForecastTrain$mae.80 <- GAPHybridForecastTrain$`Hi 80` - GAPHybridForecastTrain$`Lo 80`
+GAPHWForecastTrain$mae.80 <- GAPHWForecastTrain$`Hi 80` - GAPHWForecastTrain$`Lo 80`
+GAPArimaForecastTrain$mae.80 <- GAPArimaForecastTrain$`Hi 80`- GAPArimaForecastTrain$`Lo 80`
+
+GAPHybridForecastTrain$mpe.95 <- GAPHybridForecastTrain$mae.95 / GAPHybridForecastTrain$`Hi 95`
+GAPHWForecastTrain$mpe.95 <- GAPHWForecastTrain$mae.95 / GAPHWForecastTrain$`Hi 95`
+GAPArimaForecastTrain$mpe.95 <- GAPArimaForecastTrain$mae.95 / GAPArimaForecastTrain$`Hi 95`
+
+GAPHybridForecastTrain$mpe.80 <- GAPHybridForecastTrain$mae.80 / GAPHybridForecastTrain$`Hi 80`
+GAPHWForecastTrain$mpe.80 <- GAPHWForecastTrain$mae.80 / GAPHWForecastTrain$`Hi 80`
+GAPArimaForecastTrain$mpe.80 <- GAPArimaForecastTrain$mae.80 / GAPArimaForecastTrain$`Hi 80`
+
+summary(GAPHybridForecastTrain$mae.95)
+summary(GAPHWForecastTrain$mae.95)
+summary(GAPArimaForecastTrain$mae.95)
+
+summary(GAPHybridForecastTrain$mae.80)
+summary(GAPHWForecastTrain$mae.80)
+summary(GAPArimaForecastTrain$mae.80)
+
+summary(GAPHybridForecast$mpe.95)
+summary(GAPHWForecast$mpe.95)
+summary(GAPArimaForecast$mpe.95)
+
+summary(GAPHybridForecast$mpe.80)
+summary(GAPHWForecast$mpe.80)
+summary(GAPArimaForecast$mpe.80)
+
+
+#### 2.6. Applying Model
+
+### 2.6.1. HoltWinters
+## 2.6.1.1. HoltWinters to GAP
 GAP.Month.TS.HoltWinters <- HoltWinters(GAP.Month.TS, alpha = NULL)
 stats:::plot.HoltWinters(GAP.Month.TS.HoltWinters, col = 1, 
                          col.predicted = "green")
 
-GAP.Month.TS.Forecast.Train <- HoltWinters(GAP.Month.TS.Train, alpha = NULL)
-stats:::plot.HoltWinters(GAP.Month.TS.Forecast.Train, col = 1,
+GAP.Month.TS.HWForecast <- forecast:::forecast.HoltWinters(GAP.Month.TS.HoltWinters, h = 12)
+forecast:::plot.forecast(GAP.Month.TS.HWForecast)
+
+accuracy(GAP.Month.TS.HWForecast)
+GAP.Month.TS.HWForecast
+
+## 2.6.1.2. HoltWinters to GRP
+GRP.Month.TS.HoltWinters <- HoltWinters(GRP.Month.TS, alpha = NULL)
+stats:::plot.HoltWinters(GRP.Month.TS.HoltWinters, col = 1, 
                          col.predicted = "green")
 
-GAP.Month.TS.Forecast.Train$fitted
+GRP.Month.TS.HWForecast <- forecast:::forecast.HoltWinters(GRP.Month.TS.HoltWinters)
+forecast:::plot.forecast(GRP.Month.TS.HWForecast)
 
-GAP.Month.TS.HWForecast.Train <- forecast:::forecast.HoltWinters(GAP.Month.TS.Forecast.Train, h = 12)
-GAP.Month.TS.HWForecast.Train
-forecast:::plot.forecast(GAP.Month.TS.HWForecast.Train)
+accuracy(GRP.Month.TS.HWForecast)
 
-accuracy(GAP.Month.TS.HWForecast.Train,GAP.Month.TS.Test)
 
-## 2.5.1.2. HoltWinters to GRP
+## 2.6.1.3. HoltWinters to Total Consumption
+TC.Month.TS.HoltWinters <- HoltWinters(TC.Month.TS, alpha = NULL)
+stats:::plot.HoltWinters(TC.Month.TS.HoltWinters, col = 1, 
+                         col.predicted = "green")
 
-## 2.5.1.3. HoltWinters to Total Consumption
+TC.Month.TS.HWForecast <- forecast:::forecast.HoltWinters(TC.Month.TS.HoltWinters)
+forecast:::plot.forecast(TC.Month.TS.HWForecast)
 
-### 2.5.2. Arima
+accuracy(TC.Month.TS.HWForecast)
 
-## 2.5.2.1. Arima to GAP
+### 2.6.2. Arima
 
-## 2.5.2.2. Arima to GRP
+## 2.6.2.1. Arima to GAP
+GAP.Month.TS.Arima <- auto.arima(GAP.Month.TS)
+plot(GAP.Month.TS.Arima)
+GAP.Month.TS.ArimaForecast <- forecast:::forecast.Arima(GAP.Month.TS.Arima, h = 12)
+plot(GAP.Month.TS.ArimaForecast)
 
-## 2.5.2.3. Arima to Total Consumption
+accuracy(GAP.Month.TS.ArimaForecast)
+
+## 2.6.2.2. Arima to GRP
+GRP.Month.TS.Arima <- auto.arima(GRP.Month.TS)
+plot(GRP.Month.TS.Arima)
+GRP.Month.TS.ArimaForecast <- forecast:::forecast.Arima(GRP.Month.TS.Arima, h = 12)
+plot(GRP.Month.TS.ArimaForecast)
+
+accuracy(GRP.Month.TS.ArimaForecast)
+
+## 2.6.2.3. Arima to Total Consumption
+TC.Month.TS.Arima <- auto.arima(TC.Month.TS)
+plot(TC.Month.TS.Arima)
+TC.Month.TS.ArimaForecast <- forecast:::forecast.Arima(TC.Month.TS.Arima, h = 12)
+plot(TC.Month.TS.ArimaForecast)
+
+accuracy(TC.Month.TS.ArimaForecast)
+
+autoplot(GAP.Month.TS) +
+  autolayer(GAP.Month.TS.ArimaForecast)
+
+
+#2.6.3 Hybrid
+GAP.Month.TS.Hybrid <- hybridModel(GAP.Month.TS, models = "aefnst", lambda = NULL, a.args = NULL,
+                                   e.args = NULL, n.args = NULL, s.args = NULL, t.args = NULL,
+                                   z.args = NULL, weights = c("equal", "insample.errors", "cv.errors"),
+                                   errorMethod = c("RMSE", "MAE", "MASE"), cvHorizon = frequency(y),
+                                   windowSize = 84, horizonAverage = FALSE, parallel = FALSE,
+                                   num.cores = 2L, verbose = TRUE)
+
+GAP.Month.TS.HybridForecast <- forecastHybrid:::forecast.hybridModel(GAP.Month.TS.Hybrid, h = 12)
+
+
+# Comparing error metrics
+GAPHybridForecast <- as.data.frame(GAP.Month.TS.HybridForecast)
+GAPHWForecast <- as.data.frame(GAP.Month.TS.HWForecast)
+GAPArimaForecast <- as.data.frame(GAP.Month.TS.ArimaForecast)
+
+GAPHybridForecast$mae.95 <- GAPHybridForecast$`Hi 95` - GAPHybridForecast$`Lo 95`
+GAPHWForecast$mae.95 <- GAPHWForecast$`Hi 95` - GAPHWForecast$`Lo 95`
+GAPArimaForecast$mae.95 <- GAPArimaForecast$`Hi 95`- GAPArimaForecast$`Lo 95`
+
+GAPHybridForecast$mae.80 <- GAPHybridForecast$`Hi 80` - GAPHybridForecast$`Lo 80`
+GAPHWForecast$mae.80 <- GAPHWForecast$`Hi 80` - GAPHWForecast$`Lo 80`
+GAPArimaForecast$mae.80 <- GAPArimaForecast$`Hi 80`- GAPArimaForecast$`Lo 80`
+
+GAPHybridForecast$mpe.95 <- GAPHybridForecast$mae.95 / GAPHybridForecast$`Hi 95`
+GAPHWForecast$mpe.95 <- GAPHWForecast$mae.95 / GAPHWForecast$`Hi 95`
+GAPArimaForecast$mpe.95 <- GAPArimaForecast$mae.95 / GAPArimaForecast$`Hi 95`
+
+GAPHybridForecast$mpe.80 <- GAPHybridForecast$mae.80 / GAPHybridForecast$`Hi 80`
+GAPHWForecast$mpe.80 <- GAPHWForecast$mae.80 / GAPHWForecast$`Hi 80`
+GAPArimaForecast$mpe.80 <- GAPArimaForecast$mae.80 / GAPArimaForecast$`Hi 80`
+
+summary(GAPHybridForecast$mae.95)
+summary(GAPHWForecast$mae.95)
+summary(GAPArimaForecast$mae.95)
+
+summary(GAPHybridForecast$mae.80)
+summary(GAPHWForecast$mae.80)
+summary(GAPArimaForecast$mae.80)
+
+summary(GAPHybridForecast$mpe.95)
+summary(GAPHWForecast$mpe.95)
+summary(GAPArimaForecast$mpe.95)
+
+summary(GAPHybridForecast$mpe.80)
+summary(GAPHWForecast$mpe.80)
+summary(GAPArimaForecast$mpe.80)
 
