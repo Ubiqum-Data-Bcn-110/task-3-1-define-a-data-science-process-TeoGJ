@@ -54,6 +54,7 @@ install.packages("bizdays")
 install.packages("marima")
 install.packages("forecastHybrid")
 install.packages("vars")
+install.packages("opera")
 library(readr)
 library(dplyr)
 library(lubridate)
@@ -66,6 +67,8 @@ library(bizdays)
 library(marima)
 library(forecastHybrid)
 library(vars)
+library(opera)
+library(rvest)
 
 
 
@@ -89,7 +92,11 @@ colnames(df)[10] <-"DateTime"
 df <- df[,c(ncol(df), 1:(ncol(df)-1))]
 df$DateTime <- as.POSIXct(df$DateTime)
 
+# adding weather data
+meteo <- readxl::read_xlsx("meteodata.xlsx")
+meteo <- as.data.frame(meteo)
 
+meteo$Ensoleillement <- meteo$Ensoleillement*1440
 
 #### 1. Data preprocessing
 ### 1.1. feature engineering
@@ -98,6 +105,9 @@ df$DateTime <- as.POSIXct(df$DateTime)
 
 df$Global_active_power <- (df$Global_active_power*1000)/60
 df$Global_reactive_power <- (df$Global_reactive_power*1000)/60
+
+DailyConsumption$ActivePower <- (DailyConsumption$ActivePower*60)/1000
+DailyConsumption$ReactivePower <- (DailyConsumption$ReactivePower*60)/1000
 
 ## 1.1.3. New features to create: 
 # 1.1.3.1. Total Consumption and Total Submetered Consumption
@@ -114,15 +124,8 @@ df$Year <- as.numeric(df$Year)
 df$Month <- substr(df$DateTime,6,7)
 df$Month <- as.numeric(df$Month)
 
-df$Season$Winter
-df$Season$Spring
-df$Season$Summer
-df$Season$Autumn
-
-create.calendar(name='FrenchCalendar', holidays=holidays, weekdays=c('sunday', 'saturday'),
-                 adjust.from=adjust.next, adjust.to=adjust.previous)
-
-calendars()
+df$Day <- substr(df$DateTime,9,10)
+df$Day <- as.numeric(df$Day)
 
 energy_ts <- df$Global_active_power  
 plot(energy_ts)  
@@ -132,6 +135,10 @@ plot(df$gap_clean)
 ## 1.1.4. Replacing NA's (when Quim's sentence "less is more" has full of sense)
 
 df[is.na(df)] <- 0
+meteo[is.na(meteo)] <- 0
+
+
+df %>% 
 
 ## 1.1.5. Subsampling Data
 
@@ -144,6 +151,47 @@ AnnualConsumption <- df %>% group_by(Year) %>% summarise("ActivePower"=sum(Globa
                                                                "TotalConsumption"=sum(TotalConsumption))
 
 
+DailyConsumption <- df %>% group_by(Date) %>% summarise("ActivePower"=sum(Global_active_power),
+                                                        "ReactivePower"=sum(Global_active_power),
+                                                        "Kitchen"=sum(Sub_metering_1),
+                                                        "Laundry"=sum(Sub_metering_2),
+                                                        "Climatization"=sum(Sub_metering_3),
+                                                        "NoSubmetered"=sum(TotalSubCons),
+                                                        "TotalConsumption"=sum(TotalConsumption),
+                                                        "Voltage"=mean(Voltage),
+                                                        "Intensity"=sum(Global_intensity))
+
+meteo2 <- meteo %>% group_by(Date1) %>% summarise("TMin"=`Temp. Minime`,
+                                                 "TMax" =`Temp. Maximale`,
+                                                 "Sun"=Ensoleillement,
+                                                 "Rain"=Précipitations)
+
+meteo$Date1 <- ymd(meteo$Date1)
+str(meteo)
+meteo$Year <- substr(meteo$Date1,1,4)
+meteo$Year <- as.numeric(meteo$Year)
+  
+meteo$Month <- substr(meteo$Date1,6,7)
+meteo$Month <- as.numeric(meteo$Month)
+
+meteo_month <- meteo%>% group_by(Year,Month) %>% summarise("TMin"=mean(`Temp. Minime`),
+                                                      "TMax"=mean(`Temp. Maximale`),
+                                                      "Sun"=sum(Ensoleillement),
+                                                      "Rain"=sum(Précipitations))
+
+
+DailyConsumption <- cbind(DailyConsumption, meteo)
+DailyConsumption[is.na(DailyConsumption)] <- 0
+DailyConsumption$Date1 = NULL
+DailyConsumption$TMin = as.numeric(DailyConsumption$TMin)
+DailyConsumption$TMax = as.numeric(DailyConsumption$TMax)
+DailyConsumption$Sun = as.numeric(DailyConsumption$Sun)
+
+DailyNumeric <- DailyConsumption
+DailyNumeric$Date = NULL
+                                            
+
+
 MonthlyConsumption <- df %>% group_by(Year, Month) %>% summarise("ActivePower"=sum(Global_active_power),
                                                                 "ReactivePower"=sum(Global_reactive_power),
                                                                 "Kitchen"=sum(Sub_metering_1),
@@ -152,6 +200,10 @@ MonthlyConsumption <- df %>% group_by(Year, Month) %>% summarise("ActivePower"=s
                                                                 "TotalSubCons"=sum(TotalSubCons),
                                                                 "TotalConsumption"=sum(TotalConsumption))
 
+MonthlyConsumption <- cbind(MonthlyConsumption,meteo_month)
+
+MonthlyNumeric <- cbind(MonthlyConsumption,meteo_month)
+str(MonthlyNumeric)
 
 # as we realize on 2.2. while decomposing, August'08 is outlying the model,
 # so we'll adjust it by replacing its value for the mean all the rest of August
@@ -178,12 +230,46 @@ MonthlyConsumption[21,8] <- sum(MonthlyConsumption[9,8], MonthlyConsumption[33,8
 MonthlyConsumption[21,9] <- sum(MonthlyConsumption[9,9], MonthlyConsumption[33,9],
                                 MonthlyConsumption[45,9])/3
 
+
+MonthlyConsumption %>% dplyr::select(Year,Month,ActivePower,ReactivePower,TMin,TMax) %>%
+  ggplot(aes(x=Month)) +
+  geom_line(aes(y=ActivePower,col="ActivePower")) +
+  geom_line(aes(y=ReactivePower,col="ReactivePower")) +
+  geom_line(aes(y=TMax,col="TMax")) +
+  geom_line(aes(y=TMin,col="TMin"))
+
+
+DailyConsumption %>% dplyr::select(Date,ActivePower,ReactivePower,Kitchen,Laundry,
+                                   Climatization,TotalConsumption,TMin,TMax,Sun,
+                                   Rain) %>%
+  ggplot(aes(x=Date)) +
+  geom_line(aes(y=TMax,col="TMax"))
+
+DailyConsumption %>% dplyr::select(Date,ActivePower,ReactivePower,Kitchen,Laundry,
+                                   Climatization,TotalConsumption,TMin,TMax,Sun,
+                                   Rain) %>%
+  ggplot(aes(x=Date)) +
+  geom_line(aes(y=TMax,col="TMax")) +
+  geom_line(aes(y=TMin,col="TMin"))
+
+  
+DailyConsumption %>% dplyr::select(Date,ActivePower,ReactivePower,Kitchen,Laundry,
+                                     Climatization,TotalConsumption,TMin,TMax,Sun,
+                                     Rain) %>%
+  ggplot(aes(x=Date)) +
+
+DailyConsumption$TMax <- DailyConsumption$`Temp. Maximale`
+DailyConsumption$TMin <- DailyConsumption$`Temp. Minime`
+DailyConsumption$Rain <- DailyConsumption$Précipitations
+DailyConsumption$Sun <- DailyConsumption$Ensoleillement
+
+plot(df$Global_intensity, df$Voltage)
+
 # Given the fact that both Dec-06 and Nov-10 the monthly observations are
 # incomplete, I'll filter both before training the model.
 
 MonthlyConsumption2 <- MonthlyConsumption %>% filter(!(Year == 2006))
 MonthlyConsumption2 <- MonthlyConsumption2 %>% filter(!(Year == 2010 & Month == 11))
-
 
 ## 1.1.6. Correlation Matrix
 
@@ -217,6 +303,9 @@ cor(numeric_df, use = "pairwise.complete.obs")     #use this argument to deal wi
 # 3. GAP                        0.26
 # 4. No Submetered Consumption  0.22
 
+cor(DailyNumeric, use = "pairwise.complete.obs")     #use this argument to deal with NA
+cor(MonthlyNumeric, use = "pairwise.complete.obs")
+
 ## Data Visualization
 
 df %>% select(Date,DateTime,TotalConsumption) %>% 
@@ -240,6 +329,9 @@ boxplot(ts_annual ~ cycle(ts_annual))
 boxplot(ts_monthly ~ cycle(ts_monthly))
 boxplot(ts_monthly ~ cycle(ts_monthly))
 
+boxplot(GAP.Month.TS ~ cycle(GAP.Month.TS))
+boxplot(GRP.Month.TS ~ cycle(GRP.Month.TS))
+boxplot(TC.Month.TS ~ cycle(TC.Month.TS))
 
 # Splitting into train and test sets
 
@@ -273,6 +365,25 @@ plot(GAP.Month.TS.Decomposed)
 autoplot(GAP.Month.TS.Decomposed)
 
 GAP.Month.TS.2 <- (ts_monthly2[,3])
+
+
+stl_gap7 <- stl(GAP.Month.TS, s.window = 7)
+plot(stl_gap7)
+
+stl_gap9 <- stl(GAP.Month.TS, s.window = 9)
+plot(stl_gap9)
+
+stl_gap11 <- stl(GAP.Month.TS, s.window = 11)
+plot(stl_gap11)
+
+stl_grp7 <- stl(GRP.Month.TS, s.window = 7)
+plot(stl_grp7)
+
+stl_grp9 <- stl(GRP.Month.TS, s.window = 9)
+plot(stl_grp9)
+
+stl_grp11 <- stl(GRP.Month.TS, s.window = 11)
+plot(stl_grp11)
 
 #2.2.1.1. Decompose monthly GAP to train and test
 GAP.Month.TS.Train <- (ts_monthly_train[,3])
@@ -509,7 +620,7 @@ accuracy(TC.Month.TS.Train.ArimaForecast.2, TC.Month.TS.Test.2)
 ## 2.4.3. Hybrid modelling
 # 2.4.3.1. Training hybrid modelling to GAP
 
-GAP.Month.TS.Hybrid.Train <- hybridModel(GAP.Month.TS.Train.2, models = "aefnst", lambda = NULL, a.args = NULL,
+GAP.Month.TS.Hybrid.Train <- hybridModel(GAP.Month.TS.Train, models = "aefnst", lambda = NULL, a.args = NULL,
             e.args = NULL, n.args = NULL, s.args = NULL, t.args = NULL,
             z.args = NULL, weights = c("equal", "insample.errors", "cv.errors"),
             errorMethod = c("RMSE", "MAE", "MASE"), cvHorizon = frequency(y),
@@ -526,7 +637,7 @@ accuracy(GAP.Month.TS.Train.ArimaForecast, GAP.Month.TS.Test.2)
 
 # 2.4.3.2. Training hybrid modelling to GRP
 
-GRP.Month.TS.Hybrid.Train <- hybridModel(GRP.Month.TS.Train.2, models = "aefnst", lambda = NULL, a.args = NULL,
+GRP.Month.TS.Hybrid.Train <- hybridModel(GRP.Month.TS.Train, models = "aefnst", lambda = NULL, a.args = NULL,
                                          e.args = NULL, n.args = NULL, s.args = NULL, t.args = NULL,
                                          z.args = NULL, weights = c("equal", "insample.errors", "cv.errors"),
                                          errorMethod = c("RMSE", "MAE", "MASE"), cvHorizon = frequency(y),
@@ -547,8 +658,14 @@ accuracy(GRP.Month.TS.Train.ArimaForecast, GRP.Month.TS.Test.2)
 autoplot(GAP.Month.TS.Test) +
   autolayer(GAP.Month.TS.HWForecast.Train,col="red", series = "HoltWinters", PI = FALSE) +
   autolayer(GAP.Month.TS.Train.ArimaForecast,col="blue", series = "ARIMA", PI = FALSE) +
-  autolayer(GAP.Month.TS.HybridForecast, col = "green", series = "Hybrid", PI = FALSE) +
+  autolayer(GAP.Month.TS.HybridForecast.Train, col = "green", series = "Hybrid", PI = FALSE) +
     scale_color_manual(labels("HoltWinters","ARIMA"))
+
+autoplot(GAP.Month.TS.Test) +
+  autolayer(GAP.Month.TS.Train.ArimaForecast,col="blue", series = "ARIMA", PI = FALSE)
+
+    autolayer(GAP.Month.TS.HybridForecast, col = "green", series = "Hybrid", PI = FALSE) +
+  scale_color_manual(labels("HoltWinters","ARIMA"))
 
 
 ## 2.5.2. GRP
@@ -562,6 +679,9 @@ autoplot(TC.Month.TS.Test) +
   autolayer(TC.Month.TS.HWForecast.Train, col="red", PI = FALSE) +
   autolayer(TC.Month.TS.Train.ArimaForecast, col="blue", PI = FALSE)
 
+
+## 2.5.4. Checking trained models performance
+# 2.5.4.1. GAP
 GAPHybridForecastTrain <- as.data.frame(GAP.Month.TS.HybridForecast.Train)
 GAPHWForecastTrain <- as.data.frame(GAP.Month.TS.HWForecast.Train)
 GAPArimaForecastTrain <- as.data.frame(GAP.Month.TS.Train.ArimaForecast)
@@ -590,13 +710,50 @@ summary(GAPHybridForecastTrain$mae.80)
 summary(GAPHWForecastTrain$mae.80)
 summary(GAPArimaForecastTrain$mae.80)
 
-summary(GAPHybridForecast$mpe.95)
-summary(GAPHWForecast$mpe.95)
-summary(GAPArimaForecast$mpe.95)
+summary(GAPHybridForecastTrain$mpe.95)
+summary(GAPHWForecastTrain$mpe.95)
+summary(GAPArimaForecastTrain$mpe.95)
 
-summary(GAPHybridForecast$mpe.80)
-summary(GAPHWForecast$mpe.80)
-summary(GAPArimaForecast$mpe.80)
+summary(GAPHybridForecastTrain$mpe.80)
+summary(GAPHWForecastTrain$mpe.80)
+summary(GAPArimaForecastTrain$mpe.80)
+
+# 2.5.4.2. GRP
+GRPHybridForecastTrain <- as.data.frame(GRP.Month.TS.HybridForecast.Train)
+GRPHWForecastTrain <- as.data.frame(GRP.Month.TS.HWForecast.Train)
+GRPArimaForecastTrain <- as.data.frame(GRP.Month.TS.Train.ArimaForecast)
+
+GRPHybridForecastTrain$mae.95 <- GRPHybridForecastTrain$`Hi 95` - GRPHybridForecastTrain$`Lo 95`
+GRPHWForecastTrain$mae.95 <- GRPHWForecastTrain$`Hi 95` - GRPHWForecastTrain$`Lo 95`
+GRPArimaForecastTrain$mae.95 <- GRPArimaForecastTrain$`Hi 95`- GRPArimaForecastTrain$`Lo 95`
+
+GRPHybridForecastTrain$mae.80 <- GRPHybridForecastTrain$`Hi 80` - GRPHybridForecastTrain$`Lo 80`
+GRPHWForecastTrain$mae.80 <- GRPHWForecastTrain$`Hi 80` - GRPHWForecastTrain$`Lo 80`
+GRPArimaForecastTrain$mae.80 <- GRPArimaForecastTrain$`Hi 80`- GRPArimaForecastTrain$`Lo 80`
+
+GRPHybridForecastTrain$mpe.95 <- GRPHybridForecastTrain$mae.95 / GRPHybridForecastTrain$`Hi 95`
+GRPHWForecastTrain$mpe.95 <- GRPHWForecastTrain$mae.95 / GRPHWForecastTrain$`Hi 95`
+GRPArimaForecastTrain$mpe.95 <- GRPArimaForecastTrain$mae.95 / GRPArimaForecastTrain$`Hi 95`
+
+GRPHybridForecastTrain$mpe.80 <- GRPHybridForecastTrain$mae.80 / GRPHybridForecastTrain$`Hi 80`
+GRPHWForecastTrain$mpe.80 <- GRPHWForecastTrain$mae.80 / GRPHWForecastTrain$`Hi 80`
+GRPArimaForecastTrain$mpe.80 <- GRPArimaForecastTrain$mae.80 / GRPArimaForecastTrain$`Hi 80`
+
+summary(GRPHybridForecastTrain$mae.95)
+summary(GRPHWForecastTrain$mae.95)
+summary(GRPArimaForecastTrain$mae.95)
+
+summary(GRPHybridForecastTrain$mae.80)
+summary(GRPHWForecastTrain$mae.80)
+summary(GRPArimaForecastTrain$mae.80)
+
+summary(GRPHybridForecastTrain$mpe.95)
+summary(GRPHWForecastTrain$mpe.95)
+summary(GRPArimaForecastTrain$mpe.95)
+
+summary(GRPHybridForecastTrain$mpe.80)
+summary(GRPHWForecastTrain$mpe.80)
+summary(GRPArimaForecastTrain$mpe.80)
 
 
 #### 2.6. Applying Model
@@ -641,6 +798,7 @@ GAP.Month.TS.Arima <- auto.arima(GAP.Month.TS)
 plot(GAP.Month.TS.Arima)
 GAP.Month.TS.ArimaForecast <- forecast:::forecast.Arima(GAP.Month.TS.Arima, h = 12)
 plot(GAP.Month.TS.ArimaForecast)
+forecast:::plot.forecast(GAP.Month.TS.ArimaForecast)
 
 accuracy(GAP.Month.TS.ArimaForecast)
 
@@ -661,10 +819,13 @@ plot(TC.Month.TS.ArimaForecast)
 accuracy(TC.Month.TS.ArimaForecast)
 
 autoplot(GAP.Month.TS) +
-  autolayer(GAP.Month.TS.ArimaForecast)
+  autolayer(GAP.Month.TS.ArimaForecast, PI = FALSE) +
+  autolayer(GAP.Month.TS.HWForecast, PI = FALSE) +
+  autolayer(GAP.Month.TS.HybridForecast, PI = FALSE)
 
 
 #2.6.3 Hybrid
+#2.6.3.1. Hybrid to GAP
 GAP.Month.TS.Hybrid <- hybridModel(GAP.Month.TS, models = "aefnst", lambda = NULL, a.args = NULL,
                                    e.args = NULL, n.args = NULL, s.args = NULL, t.args = NULL,
                                    z.args = NULL, weights = c("equal", "insample.errors", "cv.errors"),
@@ -674,8 +835,51 @@ GAP.Month.TS.Hybrid <- hybridModel(GAP.Month.TS, models = "aefnst", lambda = NUL
 
 GAP.Month.TS.HybridForecast <- forecastHybrid:::forecast.hybridModel(GAP.Month.TS.Hybrid, h = 12)
 
+#2.6.3.2. Hybrid to GRP
+GRP.Month.TS.Hybrid <- hybridModel(GRP.Month.TS, models = "aefnst", lambda = NULL, a.args = NULL,
+                                   e.args = NULL, n.args = NULL, s.args = NULL, t.args = NULL,
+                                   z.args = NULL, weights = c("equal", "insample.errors", "cv.errors"),
+                                   errorMethod = c("RMSE", "MAE", "MASE"), cvHorizon = frequency(y),
+                                   windowSize = 84, horizonAverage = FALSE, parallel = FALSE,
+                                   num.cores = 2L, verbose = TRUE)
+
+GRP.Month.TS.HybridForecast <- forecastHybrid:::forecast.hybridModel(GRP.Month.TS.Hybrid, h = 12)
+
+
+## 2.6.4. Opera
+# 2.6.4.1. Opera to GAP
+
+h <- length(GAP.Month.TS.Test)
+Arima.GAP <- GAP.Month.TS.Train.ArimaForecast
+HW.GAP <- GAP.Month.TS.HWForecast.Train
+Hybrid.GAP <- GAP.Month.TS.HybridForecast.Train
+X <- cbind(Arima.GAP=Arima.GAP$mean, HW.GAP=HW.GAP$mean, Hybrid.GAP=Hybrid.GAP$mean)
+monthlyGAP <- cbind(GAP.Month.TS, X)
+colnames(monthlyGAP) <- c("Data", "Arima", "HoltWinters", "Hybrid")
+
+autoplot(monthlyGAP) +
+  xlab("Year") + ylab("Global Active Power")
+
+MLpol1 <- mixture(model = "MLpol", loss.type = "square")
+weights <- predict(MLpol1, X, GAP.Month.TS.Test, type="weights")
+head(weights)
+tail(weights)
+
+z <- ts(predict(MLpol1, X, GAP.Month.TS.Test, type='response'), start=c(3.85), freq=12)
+monthlyGAP2 <- cbind(GAP.Month.TS, z)
+colnames(monthlyGAP2) <- c("Data","Mixture")
+autoplot(monthlyGAP2) +
+  xlab("Year") + ylab(expression("Global Active Power"))
+
+
+
+mse <- c(Opera = mean((GAP.Month.TS.Test-z)^2),
+         Hybrid = mean((GAP.Month.TS.Test - GAPHybridForecast$mean)^2),
+         HW = mean((GAP.Month.TS.Test - GAPHWForecast$mean)^2),
+         Arima = mean((GAP.Month.TS.Test - GAPHybridForecast$mean)^2))
 
 # Comparing error metrics
+# GAP
 GAPHybridForecast <- as.data.frame(GAP.Month.TS.HybridForecast)
 GAPHWForecast <- as.data.frame(GAP.Month.TS.HWForecast)
 GAPArimaForecast <- as.data.frame(GAP.Month.TS.ArimaForecast)
@@ -711,4 +915,54 @@ summary(GAPArimaForecast$mpe.95)
 summary(GAPHybridForecast$mpe.80)
 summary(GAPHWForecast$mpe.80)
 summary(GAPArimaForecast$mpe.80)
+
+#GRP
+GRPHybridForecast <- as.data.frame(GRP.Month.TS.HybridForecast)
+GRPHWForecast <- as.data.frame(GRP.Month.TS.HWForecast)
+GRPArimaForecast <- as.data.frame(GRP.Month.TS.ArimaForecast)
+
+GRPHybridForecast$mae.95 <- GRPHybridForecast$`Hi 95` - GRPHybridForecast$`Lo 95`
+GRPHWForecast$mae.95 <- GRPHWForecast$`Hi 95` - GRPHWForecast$`Lo 95`
+GRPArimaForecast$mae.95 <- GRPArimaForecast$`Hi 95`- GRPArimaForecast$`Lo 95`
+
+GRPHybridForecast$mae.80 <- GRPHybridForecast$`Hi 80` - GRPHybridForecast$`Lo 80`
+GRPHWForecast$mae.80 <- GRPHWForecast$`Hi 80` - GRPHWForecast$`Lo 80`
+GRPArimaForecast$mae.80 <- GRPArimaForecast$`Hi 80`- GRPArimaForecast$`Lo 80`
+
+GRPHybridForecast$mpe.95 <- GRPHybridForecast$mae.95 / GRPHybridForecast$`Hi 95`
+GRPHWForecast$mpe.95 <- GRPHWForecast$mae.95 / GRPHWForecast$`Hi 95`
+GRPArimaForecast$mpe.95 <- GRPArimaForecast$mae.95 / GRPArimaForecast$`Hi 95`
+
+GRPHybridForecast$mpe.80 <- GRPHybridForecast$mae.80 / GRPHybridForecast$`Hi 80`
+GRPHWForecast$mpe.80 <- GRPHWForecast$mae.80 / GRPHWForecast$`Hi 80`
+GRPArimaForecast$mpe.80 <- GRPArimaForecast$mae.80 / GRPArimaForecast$`Hi 80`
+
+summary(GRPHybridForecast$mae.95)
+summary(GRPHWForecast$mae.95)
+summary(GRPArimaForecast$mae.95)
+
+summary(GRPHybridForecast$mae.80)
+summary(GRPHWForecast$mae.80)
+summary(GRPArimaForecast$mae.80)
+
+summary(GRPHybridForecast$mpe.95)
+summary(GRPHWForecast$mpe.95)
+summary(GRPArimaForecast$mpe.95)
+
+summary(GRPHybridForecast$mpe.80)
+summary(GRPHWForecast$mpe.80)
+summary(GRPArimaForecast$mpe.80)
+
+
+
+####2.7. Multivariate forecasting
+
+MultiFC <- forecast:::forecast.mts(ts_monthly, h = 12, level = c(80,95))
+
+forecast:::plot.mforecast(MultiFC)
+
+
+
+
+
 
