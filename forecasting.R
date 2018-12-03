@@ -323,6 +323,8 @@ ts_annual <- ts(AnnualConsumption, frequency = 1)
 ts_monthly <- ts(MonthlyConsumption, frequency = 12)
 ts_monthly2 <- ts(MonthlyConsumption2, frequency = 12)
 
+plot.ts(ts_monthly)
+
 # outliers
 
 boxplot(ts_annual ~ cycle(ts_annual))
